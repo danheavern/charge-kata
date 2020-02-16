@@ -1,7 +1,12 @@
 <div class="container-fluid">
   <div class="search-bar row">
     <div class="search-box-col col-12 col-sm-3 col-md-2">
-      <input class="search-box h-100 w-100 px-1" type="text" placeholder="Filter Items" (input)="fuzzySearch($event.target.value)">
+      <input
+        class="search-box h-100 w-100 px-1"
+        type="text"
+        placeholder="Filter Items"
+        (input)="fuzzySearch($event.target.value)"
+      />
     </div>
   </div>
   <div class="row">
@@ -10,3 +15,6 @@
     </div>
   </div>
 </div>
+<button class="btn add-button fixed-bottom m-5">
+  <h1 class="add-button-text">+</h1>
+</button>
