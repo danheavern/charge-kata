@@ -1,9 +1,12 @@
-.logo {
-  width: 100px;
+.search-bar {
+  border-bottom: 0.5px solid lightgray;
 }
 
-q {
-  font-style: italic;
-  font-size: 1.2rem;
-  quotes: "« " " »";
+.search-box,
+.search-box:focus,
+.search-box:active {
+  outline: none;
+  border: none;
 }
+
+

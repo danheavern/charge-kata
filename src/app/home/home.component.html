@@ -1,8 +1,12 @@
 <div class="container-fluid">
-  <div class="jumbotron text-center">
-    <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-      <span translate>Hello world !</span>
-    </h1>
+  <div class="search-bar row">
+    <div class="search-box-col col-12 col-sm-3 col-md-2">
+      <input class="search-box h-100 w-100 px-1 ml-3" type="text" placeholder="Filter Items" (input)="fuzzySearch($event.target.value)">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <!-- TODO: item-list component -->
+    </div>
   </div>
 </div>

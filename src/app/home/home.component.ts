@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  searchText: string;
+  
   constructor() {}
 
   ngOnInit() {
+  }
+
+  fuzzySearch(input: string){
+    this.searchText = input;
+    // TODO: implement fuzzy search on the item list
   }
 }
