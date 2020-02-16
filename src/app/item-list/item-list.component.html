@@ -1,0 +1,21 @@
+<div class="header-row row">
+    <div class="col-3" *ngFor="let header of columnHeaders">
+        <h5 class="header-text">{{header}}</h5>
+    </div>
+</div>
+<div class="item-row row" *ngFor="let item of testData">
+    <div class="col-3 field-text">
+        {{item.location}}
+    </div>
+    <div class="col-3 field-text">
+        {{item.itemNumber}}
+    </div>
+    <div class="col-3 field-text">
+        {{item.date}}
+    </div>
+    <div class="col-3">
+       <p class="field-text">
+            {{item.description}}
+       </p> 
+    </div>
+</div>

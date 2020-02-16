@@ -1,0 +1,18 @@
+.item-row {
+    border-bottom: 0.5px solid lightgray;
+    max-height: 60px;
+
+}
+
+.field-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-height: 60px;
+}
+
+@media(max-width: 576px) {
+    .header-text {
+        font-size: 14px;
+    }
+}
