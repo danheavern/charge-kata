@@ -35,7 +35,7 @@ export class NewItemFormComponent implements OnInit {
   setDefaultForm() {
     return new FormGroup({
       location: new FormControl('', Validators.required),
-      itemNumber: new FormControl('', Validators.required),
+      number: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
     });
@@ -44,7 +44,7 @@ export class NewItemFormComponent implements OnInit {
   editItemForm(item: Item) {
     return new FormGroup({
       location: new FormControl(item.location, Validators.required),
-      itemNumber: new FormControl(item.number, Validators.required),
+      number: new FormControl(item.number, Validators.required),
       date: new FormControl(item.date, Validators.required),
       description: new FormControl(item.description, Validators.required)
     });

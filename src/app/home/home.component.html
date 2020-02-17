@@ -34,7 +34,7 @@
 <ng-template #editItemModal let-modal>
   <app-new-item-form
     [itemToEdit]="selectedItem"
-    (itemCreated)="handleItemCreated($event, modal)"
+    (itemCreated)="updateItem($event, modal)"
     (dismissed)="modal.dismiss('cross-click')"
   ></app-new-item-form>
 </ng-template>

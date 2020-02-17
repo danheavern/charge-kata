@@ -38,8 +38,19 @@ export class HomeComponent implements OnInit {
   }
 
   handleItemCreated(form: any, modal?: any) {
-    console.log(form);
-    this.items.push(new Item(form.location, form.itemNumber, form.date, form.description));
+    this.items.push(this.createItemFromForm(form));
+    if (modal) {
+      modal.dismiss();
+    }
+  }
+
+  updateItem(form: any, modal?: any) {
+    this.items = this.items.map(i => {
+      if (i === this.selectedItem) {
+        return this.createItemFromForm(form);
+      }
+      return i;
+    });
     if (modal) {
       modal.dismiss();
     }
@@ -47,5 +58,9 @@ export class HomeComponent implements OnInit {
 
   deleteItem() {
     this.items = this.items.filter(i => i !== this.selectedItem);
+  }
+
+  createItemFromForm(form: any): Item {
+    return new Item(form.location, form.number, form.date, form.description);
   }
 }
