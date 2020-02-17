@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
-
-import { QuoteService } from './quote.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Item } from 'src/models/Item';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +8,59 @@ import { QuoteService } from './quote.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  quote: string | undefined;
-  isLoading = false;
+  searchText: string;
+  selectedItem: Item;
+  items = [
+    new Item('location', 145645234586, '02/16/2020', 'this is test data'),
+    new Item('new location', 143541324586, '02/16/2020', 'this is test data'),
+    new Item('location 3', 1456425444126, '02/16/2020', 'this is test data'),
+    new Item('location 4', 14564888443211, '02/16/2020', 'this is test data')
+  ];
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private modalService: NgbModal) {}
 
-  ngOnInit() {
-    this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+  ngOnInit() {}
+
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      result => {
+        // this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        console.log('Dismissed by ' + reason);
+      }
+    );
+  }
+
+  fuzzySearch(input: string) {
+    this.searchText = input;
+    // TODO: implement fuzzy search on the item list
+  }
+
+  handleItemCreated(form: any, modal?: any) {
+    this.items.push(this.createItemFromForm(form));
+    if (modal) {
+      modal.dismiss();
+    }
+  }
+
+  updateItem(form: any, modal?: any) {
+    this.items = this.items.map(i => {
+      if (i === this.selectedItem) {
+        return this.createItemFromForm(form);
+      }
+      return i;
+    });
+    if (modal) {
+      modal.dismiss();
+    }
+  }
+
+  deleteItem() {
+    this.items = this.items.filter(i => i !== this.selectedItem);
+  }
+
+  createItemFromForm(form: any): Item {
+    return new Item(form.location, form.number, form.date, form.description);
   }
 }
