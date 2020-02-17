@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from 'src/models/Item';
 
+const FuzzySearch = require('fuzzy-search');
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,10 +18,13 @@ export class HomeComponent implements OnInit {
     new Item('location 3', 1456425444126, '02/16/2020', 'this is test data'),
     new Item('location 4', 14564888443211, '02/16/2020', 'this is test data')
   ];
+  filteredList: Item[];
 
   constructor(private modalService: NgbModal) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.syncLists();
+  }
 
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -34,7 +39,10 @@ export class HomeComponent implements OnInit {
 
   fuzzySearch(input: string) {
     this.searchText = input;
-    // TODO: implement fuzzy search on the item list
+    const searcher = new FuzzySearch(this.items, ['location', 'number', 'date', 'description'], {
+      sort: true
+    });
+    this.filteredList = searcher.search(input);
   }
 
   handleItemCreated(form: any, modal?: any) {
@@ -42,6 +50,7 @@ export class HomeComponent implements OnInit {
     if (modal) {
       modal.dismiss();
     }
+    this.syncLists();
   }
 
   updateItem(form: any, modal?: any) {
@@ -54,13 +63,19 @@ export class HomeComponent implements OnInit {
     if (modal) {
       modal.dismiss();
     }
+    this.syncLists();
   }
 
   deleteItem() {
     this.items = this.items.filter(i => i !== this.selectedItem);
+    this.syncLists();
   }
 
   createItemFromForm(form: any): Item {
     return new Item(form.location, form.number, form.date, form.description);
+  }
+
+  syncLists() {
+    this.filteredList = this.items;
   }
 }
