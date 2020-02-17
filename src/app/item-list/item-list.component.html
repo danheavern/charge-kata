@@ -3,7 +3,7 @@
     <h5 class="header-text">{{ header }}</h5>
   </div>
 </div>
-<div class="item-row row" *ngFor="let item of items">
+<div class="item-row row clickable" *ngFor="let item of items">
   <div class="col-3 field-text">
     {{ item.location }}
   </div>
@@ -13,9 +13,7 @@
   <div class="col-3 field-text">
     {{ item.date }}
   </div>
-  <div class="col-3">
-    <p class="field-text">
-      {{ item.description }}
-    </p>
+  <div class="col-3 field-text">
+    {{ item.description }}
   </div>
 </div>
