@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <app-item-list></app-item-list>
+      <app-item-list [items]="items"></app-item-list>
     </div>
   </div>
 </div>
@@ -21,7 +21,7 @@
 
 <ng-template #newItemModal let-modal>
   <app-new-item-form
-    (itemCreated)="handleItemCreated($event)"
+    (itemCreated)="handleItemCreated($event, modal)"
     (dismissed)="modal.dismiss('cross-click')"
   ></app-new-item-form>
 </ng-template>

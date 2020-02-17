@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Item } from 'src/models/Item';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
   searchText: string;
+  items = [
+    new Item('location', 145645234586, '02/16/2020', 'this is test data'),
+    new Item('new location', 143541324586, '02/16/2020', 'this is test data'),
+    new Item('location 3', 1456425444126, '02/16/2020', 'this is test data'),
+    new Item('location 4', 14564888443211, '02/16/2020', 'this is test data')
+  ];
 
   constructor(private modalService: NgbModal) {}
 
@@ -29,7 +36,11 @@ export class HomeComponent implements OnInit {
     // TODO: implement fuzzy search on the item list
   }
 
-  handleItemCreated(form: any) {
+  handleItemCreated(form: any, modal?: any) {
     console.log(form);
+    this.items.push(new Item(form.location, form.itemNumber, form.date, form.description));
+    if (modal) {
+      modal.dismiss();
+    }
   }
 }
