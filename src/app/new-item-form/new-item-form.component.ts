@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Item } from 'src/models/Item';
 
 @Component({
   selector: 'app-new-item-form',
@@ -7,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./new-item-form.component.scss']
 })
 export class NewItemFormComponent implements OnInit {
+  @Input() itemToEdit: Item;
   @Output() itemCreated = new EventEmitter<any>();
   @Output() dismissed = new EventEmitter<any>();
   itemForm: FormGroup;
@@ -14,7 +16,11 @@ export class NewItemFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.itemForm = this.setDefaultForm();
+    if (this.itemToEdit) {
+      this.itemForm = this.editItemForm(this.itemToEdit);
+    } else {
+      this.itemForm = this.setDefaultForm();
+    }
   }
 
   addItem() {
@@ -32,6 +38,15 @@ export class NewItemFormComponent implements OnInit {
       itemNumber: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
+    });
+  }
+
+  editItemForm(item: Item) {
+    return new FormGroup({
+      location: new FormControl(item.location, Validators.required),
+      itemNumber: new FormControl(item.number, Validators.required),
+      date: new FormControl(item.date, Validators.required),
+      description: new FormControl(item.description, Validators.required)
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from 'src/models/Item';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -29,6 +29,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class ItemListComponent implements OnInit {
   @Input() items: Item[];
+  @Output() edit = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<any>();
+  @Output() select = new EventEmitter<any>();
+
   columnHeaders = ['Location', 'Item Number', 'Date', 'Description'];
   selectedItem: Item;
 
@@ -38,5 +42,14 @@ export class ItemListComponent implements OnInit {
 
   selectItem(item: Item) {
     this.selectedItem === item ? (this.selectedItem = null) : (this.selectedItem = item);
+    this.select.emit(item);
+  }
+
+  editItem(item: Item) {
+    this.edit.emit(item);
+  }
+
+  deleteItem(item: Item) {
+    this.delete.emit(item);
   }
 }

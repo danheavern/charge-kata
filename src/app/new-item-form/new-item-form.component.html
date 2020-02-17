@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">New Item</h4>
+  <h4 class="modal-title" id="modal-basic-title">{{ itemToEdit ? 'Edit' : 'New' }} Item</h4>
   <button type="button" class="close" aria-label="Close" (click)="dismiss()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -12,7 +12,9 @@
         <input class="my-1 p-2" formControlName="itemNumber" type="text" placeholder="Item Number" />
         <input class="my-1 p-2" formControlName="date" type="text" placeholder="Date" />
         <input class="my-1 p-2" formControlName="description" type="text" placeholder="Description" />
-        <button class="btn btn-dark my-3" [disabled]="!itemForm.valid" type="submit">Add Item</button>
+        <button class="btn btn-dark my-3" [disabled]="!itemForm.valid" type="submit">
+          {{ itemToEdit ? 'Update' : 'Add' }} Item
+        </button>
       </div>
     </div>
   </form>

@@ -9,6 +9,7 @@ import { Item } from 'src/models/Item';
 })
 export class HomeComponent implements OnInit {
   searchText: string;
+  selectedItem: Item;
   items = [
     new Item('location', 145645234586, '02/16/2020', 'this is test data'),
     new Item('new location', 143541324586, '02/16/2020', 'this is test data'),
@@ -42,5 +43,9 @@ export class HomeComponent implements OnInit {
     if (modal) {
       modal.dismiss();
     }
+  }
+
+  deleteItem() {
+    this.items = this.items.filter(i => i !== this.selectedItem);
   }
 }
