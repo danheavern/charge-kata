@@ -15,6 +15,13 @@
     </div>
   </div>
 </div>
-<button class="btn add-button fixed-bottom m-5">
+<button class="btn add-button fixed-bottom m-5" (click)="open(newItemModal)">
   <h1 class="add-button-text">+</h1>
 </button>
+
+<ng-template #newItemModal let-modal>
+  <app-new-item-form
+    (itemCreated)="handleItemCreated($event)"
+    (dismissed)="modal.dismiss('cross-click')"
+  ></app-new-item-form>
+</ng-template>

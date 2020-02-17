@@ -6,13 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-list.component.scss']
 })
 export class ItemListComponent implements OnInit {
-  columnHeaders = [
-    'Location',
-    'Item Number',
-    'Date',
-    'Description'
-  ];
-  testData=[
+  columnHeaders = ['Location', 'Item Number', 'Date', 'Description'];
+  testData = [
     {
       location: 'location',
       itemNumber: 1,
@@ -43,12 +38,9 @@ export class ItemListComponent implements OnInit {
       date: '02/16/2020',
       description: 'this is test data'
     }
-  ]
+  ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    
-  }
-
+  ngOnInit() {}
 }

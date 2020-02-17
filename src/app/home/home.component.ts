@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   searchText: string;
-  
-  constructor() {}
 
-  ngOnInit() {
+  constructor(private modalService: NgbModal) {}
+
+  ngOnInit() {}
+
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      result => {
+        // this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        console.log('Dismissed by ' + reason);
+      }
+    );
   }
 
-  fuzzySearch(input: string){
+  fuzzySearch(input: string) {
     this.searchText = input;
     // TODO: implement fuzzy search on the item list
+  }
+
+  handleItemCreated(form: any) {
+    console.log(form);
   }
 }
