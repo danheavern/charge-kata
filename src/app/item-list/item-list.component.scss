@@ -14,10 +14,12 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-height: 60px;
+  .text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-height: 60px;
+  }
 }
 
 @media (max-width: 576px) {

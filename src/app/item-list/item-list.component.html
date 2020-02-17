@@ -7,16 +7,16 @@
   <div class="col-12">
     <div class="item-row row clickable" (click)="selectItem(item)">
       <div class="col-3 field-text">
-        {{ item.location }}
+        <p class="text">{{ item.location }}</p>
       </div>
       <div class="col-3 field-text">
-        {{ item.number }}
+        <p class="text">{{ item.number }}</p>
       </div>
       <div class="col-3 field-text">
-        {{ item.date }}
+        <p class="text">{{ item.date }}</p>
       </div>
       <div class="col-3 field-text">
-        {{ item.description }}
+        <p class="text">{{ item.description }}</p>
       </div>
     </div>
     <div class="row w-100" [@openClose]="selectedItem === item ? 'open' : 'closed'">
