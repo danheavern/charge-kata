@@ -3,9 +3,9 @@
     <h5 class="header-text">{{ header }}</h5>
   </div>
 </div>
-<div class="row" *ngFor="let item of items" (click)="selectItem(item)">
+<div class="row" *ngFor="let item of items">
   <div class="col-12">
-    <div class="item-row row clickable">
+    <div class="item-row row clickable" (click)="selectItem(item)">
       <div class="col-3 field-text">
         {{ item.location }}
       </div>
@@ -19,6 +19,13 @@
         {{ item.description }}
       </div>
     </div>
-    <div class="row" *ngIf="selectedItem === item" style="height: 80px;width: 100%"></div>
+    <div class="row w-100" [@openClose]="selectedItem === item ? 'open' : 'closed'">
+      <div class="col-6 col-sm-3 d-flex flex-column justify-content-end">
+        <button class="btn btn-primary w-100 my-1">Edit</button>
+      </div>
+      <div class="col-6 col-sm-3 d-flex flex-column justify-content-end">
+        <button class="btn btn-outline-primary w-100 my-1">Delete</button>
+      </div>
+    </div>
   </div>
 </div>
