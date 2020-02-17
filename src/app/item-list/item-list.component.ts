@@ -9,8 +9,13 @@ import { Item } from 'src/models/Item';
 export class ItemListComponent implements OnInit {
   @Input() items: Item[];
   columnHeaders = ['Location', 'Item Number', 'Date', 'Description'];
+  selectedItem: Item;
 
   constructor() {}
 
   ngOnInit() {}
+
+  selectItem(item: Item) {
+    this.selectedItem === item ? (this.selectedItem = null) : (this.selectedItem = item);
+  }
 }
