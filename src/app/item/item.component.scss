@@ -23,4 +23,10 @@
 }
 .drawer {
   background-color: $light;
+
+  .item-description {
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 5px 0 50px;
+  }
 }
