@@ -16,7 +16,7 @@ The barcode of the item can be shown/hide in the detail view as well.
 
 This prototype was made utilizing ngx-rocket, Boostrap, and Angular-Bootstrap (for components, like the modals). 
 
-Unit Test coverage was focused on the manipulation of the items array, and most can be seen in home.component.spec.ts.  To run all tests, run npm start on the command line.
+Unit Test coverage was focused on the manipulation of the items array, and most can be seen in home.component.spec.ts.  To run all tests, run ```npm test``` on the command line.
 
 ## Packages
 It is often smart, especially in prototyping, not to reinvent the wheel.  Hence the following handy tools were utilized in this project.
