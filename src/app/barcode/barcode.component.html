@@ -1,1 +1,10 @@
-<p>barcode works!</p>
+<div class="row">
+  <div class="col-12">
+    <a class="link" href="javascript:void(0)" (click)="createBarcode()">{{ showBarcode ? 'hide' : 'show' }} barcode</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <svg [@openClose]="showBarcode ? 'open' : 'closed'" [id]="'barcode' + textToEncode"></svg>
+  </div>
+</div>

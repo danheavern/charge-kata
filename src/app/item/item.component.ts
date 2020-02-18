@@ -2,8 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from 'src/models/Item';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
-import * as JsBarcode from 'jsbarcode';
-
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -38,18 +36,7 @@ export class ItemComponent implements OnInit {
   @Output() delete = new EventEmitter<any>();
   @Output() select = new EventEmitter<any>();
 
-  showBarcode = false;
-
   constructor() {}
 
   ngOnInit() {}
-
-  createBarcode(itemNumber: string) {
-    this.showBarcode = !this.showBarcode;
-    if (this.showBarcode)
-      JsBarcode(`#barcode${itemNumber}`, itemNumber, {
-        width: 2,
-        height: 40
-      });
-  }
 }
