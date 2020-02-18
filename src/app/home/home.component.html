@@ -9,13 +9,13 @@
       />
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
+  <div class="row scroll-view-container">
+    <div class="col-12 pb-5 scroll-view">
       <app-item-list
         [items]="filteredList"
         (select)="selectedItem = $event"
         (edit)="open(editItemModal)"
-        (delete)="deleteItem()"
+        (delete)="open(areYouSure)"
       ></app-item-list>
     </div>
   </div>
@@ -37,4 +37,8 @@
     (itemCreated)="updateItem($event, modal)"
     (dismissed)="modal.dismiss('cross-click')"
   ></app-new-item-form>
+</ng-template>
+
+<ng-template #areYouSure let-modal>
+  <app-are-you-sure (delete)="deleteItem(); modal.dismiss()" (cancel)="modal.dismiss()"> </app-are-you-sure>
 </ng-template>
