@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from 'src/models/Item';
+import { testItems } from 'src/models/TestData';
 
-const FuzzySearch = require('fuzzy-search');
+import * as FuzzySearch from 'fuzzy-search';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,7 @@ const FuzzySearch = require('fuzzy-search');
 export class HomeComponent implements OnInit {
   searchText: string;
   selectedItem: Item;
-  items = [
-    new Item('location', 145645234586, '02/16/2020', 'this is test data'),
-    new Item('new location', 143541324586, '02/16/2020', 'this is test data'),
-    new Item('location 3', 1456425444126, '02/16/2020', 'this is test data'),
-    new Item('location 4', 14564888443211, '02/16/2020', 'this is test data')
-  ];
+  items = testItems;
   filteredList: Item[];
 
   constructor(private modalService: NgbModal) {}

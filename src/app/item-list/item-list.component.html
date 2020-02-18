@@ -1,31 +1,17 @@
 <div class="header-row row">
-  <div class="col-3" *ngFor="let header of columnHeaders">
+  <div class="col-4" *ngFor="let header of columnHeaders">
     <h5 class="header-text">{{ header }}</h5>
   </div>
 </div>
 <div class="row" *ngFor="let item of items">
   <div class="col-12">
-    <div class="item-row row clickable" (click)="selectItem(item)">
-      <div class="col-3 field-text">
-        <p class="text">{{ item.location }}</p>
-      </div>
-      <div class="col-3 field-text">
-        <p class="text">{{ item.number }}</p>
-      </div>
-      <div class="col-3 field-text">
-        <p class="text">{{ item.date }}</p>
-      </div>
-      <div class="col-3 field-text">
-        <p class="text">{{ item.description }}</p>
-      </div>
-    </div>
-    <div class="row w-100" [@openClose]="selectedItem === item ? 'open' : 'closed'">
-      <div class="col-6 col-sm-3 d-flex flex-column justify-content-end">
-        <button class="btn btn-primary w-100 my-1" (click)="editItem(item)">Edit</button>
-      </div>
-      <div class="col-6 col-sm-3 d-flex flex-column justify-content-end">
-        <button class="btn btn-outline-primary w-100 my-1" (click)="deleteItem(item)">Delete</button>
-      </div>
-    </div>
+    <app-item
+      [item]="item"
+      [selected]="selectedItem === item"
+      (select)="selectItem(item)"
+      (edit)="editItem(item)"
+      (delete)="deleteItem(item)"
+    >
+    </app-item>
   </div>
 </div>
