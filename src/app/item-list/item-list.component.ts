@@ -37,7 +37,7 @@ export class ItemListComponent implements OnInit {
   @Output() delete = new EventEmitter<any>();
   @Output() select = new EventEmitter<any>();
 
-  columnHeaders = ['Location', 'Item Number', 'Date', 'Description'];
+  columnHeaders = ['Location', 'Date', 'Description'];
   selectedItem: Item;
   showBarcode = false;
 

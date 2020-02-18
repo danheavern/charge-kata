@@ -1,21 +1,18 @@
 <div class="header-row row">
-  <div class="col-3" *ngFor="let header of columnHeaders">
+  <div class="col-4" *ngFor="let header of columnHeaders">
     <h5 class="header-text">{{ header }}</h5>
   </div>
 </div>
 <div class="row" *ngFor="let item of items">
   <div class="col-12">
     <div class="item-row row clickable" (click)="selectItem(item)">
-      <div class="col-3 field-text">
+      <div class="col-4 field-text">
         <p class="text">{{ item.location }}</p>
       </div>
-      <div class="col-3 field-text">
-        <p class="text">{{ item.number }}</p>
-      </div>
-      <div class="col-3 field-text">
+      <div class="col-4 field-text">
         <p class="text">{{ item.date }}</p>
       </div>
-      <div class="col-3 field-text">
+      <div class="col-4 field-text">
         <p class="text">{{ item.description }}</p>
       </div>
     </div>
