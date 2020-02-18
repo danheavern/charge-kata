@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from 'src/models/Item';
 
-const FuzzySearch = require('fuzzy-search');
+import * as FuzzySearch from 'fuzzy-search';
 
 @Component({
   selector: 'app-home',
