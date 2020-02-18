@@ -3,6 +3,31 @@
 This project was generated with [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket/)
 version 7.1.0
 
+Author: Daniel Heavern
+
+## Overview
+This app initializes with some test data, a list of items.  Each item has fields for number, location, date, and description.  The items are listed on the homepage, displaying the location, date, and a preview of the description.
+
+When you click on an item, a detailed view drops down in the list below the item.  Here you can see the full description, as well as edit or delete the item.
+
+You can filter the results by typing into the text field at the top labeled 'Filter Items'.  This triggers the fuzzy search function which prioritizes items that match closest with the search text.  All fields are considered in the search. You can even filter by item nuber, if you know it.
+
+The barcode of the item can be shown/hide in the detail view as well.
+
+This prototype was made utilizing ngx-rocket, Boostrap, and Angular-Bootstrap (for components, like the modals). 
+
+Unit Test coverage was focused on the manipulation of the items array, and most can be seen in home.component.spec.ts.  To run all tests, run npm start on the command line.
+
+## Packages
+It is often smart, especially in prototyping, not to reinvent the wheel.  Hence the following handy tools were utilized in this project.
+
+### JsBarcode [(site)](https://www.npmjs.com/package/jsbarcode)
+JsBarcode allows for generating barcodes on-the-fly based on the item number.
+
+
+### Fuzzy-Search [(site)](https://www.npmjs.com/package/fuzzy-search)
+Open source implementation of a fuzzy search, which allows us to specifiy a haystack (item list) and needles to search for (location, description, date, and item number).
+
 # Getting started
 
 1. Go to project folder and install dependencies:
