@@ -1,1 +1,21 @@
-<p>are-you-sure works!</p>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Delete Item</h4>
+  <button type="button" class="close" aria-label="Close" (click)="cancel.emit()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body p-3">
+  <div class="row my-3">
+    <div class="col-12">
+      <p class="text-center">Are sure you would like to delete this item?</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 d-flex justify-content-end">
+      <button class="btn btn-primary w-70" (click)="delete.emit()">Delete</button>
+    </div>
+    <div class="col-6 d-flex justify-content-start">
+      <button class="btn btn-outline-primary w-70" (click)="cancel.emit()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,6 @@ import { AreYouSureComponent } from '@app/are-you-sure/are-you-sure.component';
     BarcodeComponent,
     AreYouSureComponent
   ],
-  exports: [LoaderComponent, ItemListComponent, NewItemFormComponent]
+  exports: [LoaderComponent, ItemListComponent, NewItemFormComponent, AreYouSureComponent]
 })
 export class SharedModule {}

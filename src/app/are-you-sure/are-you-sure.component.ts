@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-are-you-sure',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./are-you-sure.component.scss']
 })
 export class AreYouSureComponent implements OnInit {
+  @Output() delete = new EventEmitter<any>();
+  @Output() cancel = new EventEmitter<any>();
+
   constructor() {}
 
   ngOnInit() {}
