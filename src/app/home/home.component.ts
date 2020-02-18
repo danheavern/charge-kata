@@ -42,29 +42,42 @@ export class HomeComponent implements OnInit {
   }
 
   handleItemCreated(form: any, modal?: any) {
-    this.items.push(this.createItemFromForm(form));
+    this.addItem(this.createItemFromForm(form));
     if (modal) {
       modal.dismiss();
     }
-    this.syncLists();
   }
 
   updateItem(form: any, modal?: any) {
-    this.items = this.items.map(i => {
-      if (i === this.selectedItem) {
-        return this.createItemFromForm(form);
-      }
-      return i;
-    });
+    const newItem = this.createItemFromForm(form);
+    this.editItem(this.selectedItem, newItem);
     if (modal) {
       modal.dismiss();
     }
+  }
+
+  editItem(item: Item, newItem: Item) {
+    this.items = this.items.map(i => {
+      if (i === item) {
+        return newItem;
+      }
+      return i;
+    });
+    this.syncLists();
+  }
+
+  addItem(item: Item) {
+    this.items.push(item);
+    this.syncLists();
+  }
+
+  removeItem(item: Item) {
+    this.items = this.items.filter(i => i !== item);
     this.syncLists();
   }
 
   deleteItem() {
-    this.items = this.items.filter(i => i !== this.selectedItem);
-    this.syncLists();
+    this.removeItem(this.selectedItem);
   }
 
   createItemFromForm(form: any): Item {
