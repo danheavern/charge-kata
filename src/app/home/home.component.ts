@@ -41,14 +41,18 @@ export class HomeComponent implements OnInit {
     this.filteredList = searcher.search(input);
   }
 
-  handleItemCreated(form: any, modal?: any) {
+  addItemFromForm(form: any, modal?: any) {
     this.addItem(this.createItemFromForm(form));
     if (modal) {
       modal.dismiss();
     }
   }
 
-  updateItem(form: any, modal?: any) {
+  removeSelectedItem() {
+    this.removeItem(this.selectedItem);
+  }
+
+  editSelectedItem(form: any, modal?: any) {
     const newItem = this.createItemFromForm(form);
     this.editItem(this.selectedItem, newItem);
     if (modal) {
@@ -56,14 +60,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  editItem(item: Item, newItem: Item) {
-    this.items = this.items.map(i => {
-      if (i === item) {
-        return newItem;
-      }
-      return i;
-    });
-    this.syncLists();
+  createItemFromForm(form: any): Item {
+    return new Item(form.location, form.number, form.date, form.description);
   }
 
   addItem(item: Item) {
@@ -76,12 +74,14 @@ export class HomeComponent implements OnInit {
     this.syncLists();
   }
 
-  deleteItem() {
-    this.removeItem(this.selectedItem);
-  }
-
-  createItemFromForm(form: any): Item {
-    return new Item(form.location, form.number, form.date, form.description);
+  editItem(item: Item, newItem: Item) {
+    this.items = this.items.map(i => {
+      if (i === item) {
+        return newItem;
+      }
+      return i;
+    });
+    this.syncLists();
   }
 
   syncLists() {
