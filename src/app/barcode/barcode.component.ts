@@ -44,7 +44,8 @@ export class BarcodeComponent implements OnInit {
     if (this.showBarcode)
       JsBarcode(`#barcode${this.textToEncode}`, this.textToEncode, {
         width: 2,
-        height: 40
+        height: 40,
+        background: '#f8f9fa'
       });
   }
 }
