@@ -26,7 +26,7 @@
 
 <ng-template #newItemModal let-modal>
   <app-new-item-form
-    (itemCreated)="handleItemCreated($event, modal)"
+    (itemCreated)="addItemFromForm($event, modal)"
     (dismissed)="modal.dismiss('cross-click')"
   ></app-new-item-form>
 </ng-template>
@@ -34,11 +34,11 @@
 <ng-template #editItemModal let-modal>
   <app-new-item-form
     [itemToEdit]="selectedItem"
-    (itemCreated)="updateItem($event, modal)"
+    (itemCreated)="editSelectedItem($event, modal)"
     (dismissed)="modal.dismiss('cross-click')"
   ></app-new-item-form>
 </ng-template>
 
 <ng-template #areYouSure let-modal>
-  <app-are-you-sure (delete)="deleteItem(); modal.dismiss()" (cancel)="modal.dismiss()"> </app-are-you-sure>
+  <app-are-you-sure (delete)="removeSelectedItem(); modal.dismiss()" (cancel)="modal.dismiss()"> </app-are-you-sure>
 </ng-template>

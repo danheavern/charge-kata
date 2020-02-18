@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ItemComponent } from './item.component';
+import { BarcodeModule } from '@app/barcode/barcode.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ItemComponent', () => {
   let component: ItemComponent;
@@ -8,6 +10,7 @@ describe('ItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [BarcodeModule, NoopAnimationsModule],
       declarations: [ItemComponent]
     }).compileComponents();
   }));

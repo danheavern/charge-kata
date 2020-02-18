@@ -41,34 +41,47 @@ export class HomeComponent implements OnInit {
     this.filteredList = searcher.search(input);
   }
 
-  handleItemCreated(form: any, modal?: any) {
-    this.items.push(this.createItemFromForm(form));
+  addItemFromForm(form: any, modal?: any) {
+    this.addItem(this.createItemFromForm(form));
     if (modal) {
       modal.dismiss();
     }
-    this.syncLists();
   }
 
-  updateItem(form: any, modal?: any) {
-    this.items = this.items.map(i => {
-      if (i === this.selectedItem) {
-        return this.createItemFromForm(form);
-      }
-      return i;
-    });
+  removeSelectedItem() {
+    this.removeItem(this.selectedItem);
+  }
+
+  editSelectedItem(form: any, modal?: any) {
+    const newItem = this.createItemFromForm(form);
+    this.editItem(this.selectedItem, newItem);
     if (modal) {
       modal.dismiss();
     }
-    this.syncLists();
-  }
-
-  deleteItem() {
-    this.items = this.items.filter(i => i !== this.selectedItem);
-    this.syncLists();
   }
 
   createItemFromForm(form: any): Item {
     return new Item(form.location, form.number, form.date, form.description);
+  }
+
+  addItem(item: Item) {
+    this.items.push(item);
+    this.syncLists();
+  }
+
+  removeItem(item: Item) {
+    this.items = this.items.filter(i => i !== item);
+    this.syncLists();
+  }
+
+  editItem(item: Item, newItem: Item) {
+    this.items = this.items.map(i => {
+      if (i === item) {
+        return newItem;
+      }
+      return i;
+    });
+    this.syncLists();
   }
 
   syncLists() {
