@@ -4,7 +4,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeComponent } from './home.component';
-import { QuoteService } from './quote.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ItemListModule } from '@app/item-list/item-list.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,9 +13,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule, SharedModule, HttpClientTestingModule],
+      imports: [CoreModule, SharedModule, HttpClientTestingModule, NoopAnimationsModule, ItemListModule],
       declarations: [HomeComponent],
-      providers: [QuoteService]
+      providers: []
     }).compileComponents();
   }));
 
