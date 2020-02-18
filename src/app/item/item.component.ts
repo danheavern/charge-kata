@@ -12,7 +12,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         'open',
         style({
           'max-height': '200px',
-          'margin-bottom': '1.5rem',
+          'padding-bottom': '1.5rem',
           opacity: 1
         })
       ),
@@ -20,7 +20,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         'closed',
         style({
           'max-height': '0px',
-          'margin-bottom': '0rem',
+          'padding-bottom': '0rem',
           opacity: 0
         })
       ),
